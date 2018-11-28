@@ -1,13 +1,271 @@
 extends ./partials/layout.jade
 
 block title
-    title AST и палгины
+    title AST и плагины
 
 block slides
 
     article.illustration.illustration--title.cloud.cloud--title
         h1
-            p.wrapper AST и палгины: давайте пошалим!
+            p.wrapper AST и
+              br
+              | плагины: 
+              br 
+              | давайте
+              br 
+              | пошалим!
+
+    article.illustration.illustration--wut.cloud.cloud--wut
+        h1
+            p.wrapper AST?
+
+    article.screen.screen--ast-visual.overlay
+        .overlay__abstract.overlay__abstract--left
+            h5.overlay__title AST Visualizer
+            img.overlay__qr(src="images/ast-visual.svg", alt="QRCODE cо ссылкой")
+            p
+                a.overlay__link(href="http://nhiro.org/learn_language/AST-Visualization-on-browser.html", data-click=true) https://goo.gl/8rM1cf
+      
+    article.screen.screen--ast-explorer.overlay
+        .overlay__abstract.overlay__abstract--left
+            h5.overlay__title AST Explorer
+            img.overlay__qr(src="images/ast-explorer.svg", alt="QRCODE cо ссылкой")
+            p
+                a.overlay__link(href="https://astexplorer.net/", data-click=true) https://astexplorer.net/
+    
+    article.illustration.illustration--eslint
+    
+    article.center.code-0
+      .wrapper
+        pre
+          code.javascript.
+            $ mkdir eslint-plugin-demoforfix
+            $ cd eslint-plugin-demoforfix
+            $ npm init
+    
+    article.center.code-0
+      .wrapper
+        pre
+          code.json.
+            // package.json
+            {
+              "name": "eslint-plugin-demoforfix",
+              "version": "1.0.0",
+              "main": "no-string-classname.js",
+            }
+
+    article.center.code-0
+      .wrapper
+        pre
+          code.javascript.
+            // no-string-classname.js
+            module.exports = {
+              rules: {
+                  "no-string-classname": {
+                      create: function (context) {
+                        return {…}
+            }}}};
+
+    article.screen.screen--ast-example
+
+    article.screen.screen--ast-find
+
+    article.center.code-7
+      .wrapper
+        pre
+          code.javascript.
+            context.report({
+              message,
+              node,
+              //…
+            });
+
+    article.center.code-0
+      .wrapper
+        pre
+          code.javascript.
+            return {
+              "JSXAttribute": function (node) {
+                // …
+              }
+            }
+
+    article.center.code-0
+      .wrapper
+        pre
+          code.javascript.
+            if ((node.name.name === 'className')
+              && (node.value.type === 'Literal')) {
+              context.report({
+                node,
+                message: 'You should use 
+                css modules instead'
+              });
+            }
+
+    article.center.code-9
+      .wrapper
+        pre
+          code.javascript.
+            $ npm version minor
+            $ npm publish
+
+    article.screen.screen--publish
+    
+    article.center.code-0
+      .wrapper
+        pre
+          code.javascript.
+            $ npm i -D eslint-plugin-demoforfix
+
+    article.center.code-1
+      .wrapper
+        pre
+          code.json.
+            // .eslintrc
+            {
+              "rules": {
+                "demoforfix/no-string-classname": 2
+              },
+              "plugins": [
+                "demoforfix"
+              ],
+            }
+    
+    article.screen.screen--eslint-error
+    
+    article.screen.screen--easy
+      
+    article.illustration.illustration--unacceptable
+
+    article.illustration.illustration--yo
+
+    article.center.code-0
+      .wrapper
+        pre
+          code.bash.
+            $ sudo npm install -g yo
+            $ sudo npm install -g generator-eslint
+
+    article.center.code-0
+      .wrapper
+        pre
+          code.bash.
+            $ mkdir eslint-plugin-demoforfix
+            $ cd eslint-plugin-demoforfix
+            $ yo eslint:plugin
+            $ npm i
+
+    article.screen.screen--yo
+
+    article.center.code-0
+      .wrapper
+        pre
+          code.json.
+            // package.json
+            {
+              "name": "eslint-plugin-demoforfix",
+              "version": "1.0.0",
+              "main": "lib/index.js",
+            }
+
+    article.center.code-0
+      .wrapper
+        pre
+          code.javascript.
+            var requireIndex = 
+              require("requireindex");
+            module.exports.rules = 
+              requireIndex(__dirname + "/rules");
+
+    article.center.code-0
+      .wrapper
+        pre
+          code.javascript.
+            // no-string-classname.js
+            module.exports = {
+              rules: {
+                "no-string-classname": {
+                    create: function (context) {
+                      return {…}
+            }}}};
+
+    article.center.code-0
+      .wrapper
+        pre
+          code.javascript.
+            // no-string-classname.js
+            module.exports = {
+              meta: {…},
+              "no-string-classname": {
+                  create: function (context) {
+                    return {…}
+            }}};
+      
+    article.center.code-2
+      .wrapper
+        pre
+          code.javascript.
+            const rule = 
+              require("../../../lib/rules/no-string-classname");
+            const RuleTester = require("eslint").RuleTester;
+
+    article.center.code-0
+      .wrapper
+        pre
+          code.javascript.
+            const parserOptions = {
+              ecmaVersion: 2018,
+              sourceType: 'module',
+              ecmaFeatures: {jsx: true}};
+            const ruleTester = 
+              new RuleTester({parserOptions});
+
+    article.center.code-0
+      .wrapper
+        pre
+          code.javascript.
+            ruleTester.run(
+              "no-string-classname", 
+              rule, {
+              valid: [{…}, {…}],
+              invalid: [{…}, {…}],
+            });
+
+    article.center.code-9
+      .wrapper
+        pre
+          code.javascript.
+            { 
+              code: '…'
+            }
+
+    article.center.code-7
+      .wrapper
+        pre
+          code.javascript.
+            { code: '…',
+            errors: [{
+                message: "You should use 
+                  css modules instead",
+                type: "JSXAttribute"
+            }]}
+
+    article.center.code-9
+      .wrapper
+        pre
+          code.javascript.
+            $ npm t
+    
+    article.screen.screen--test
+
+    article.screen.screen--develop.overlay
+      .overlay__abstract.overlay__abstract--right
+        h5.overlay__title ESLint Developer Documentation
+        img.overlay__qr(src="images/develop.svg", alt="QRCODE cо ссылкой")
+        p
+          a.overlay__link(href="https://eslint.org/docs/developer-guide/architecture", data-click=true) https://goo.gl/RpEUbq
+    
 
     article.contacts.center.qrcode
         .wrapper

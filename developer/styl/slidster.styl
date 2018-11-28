@@ -19,6 +19,42 @@ section#slides article *
 html body section#slides article *[data-click]
     pointer-events all !important
 
+.overlay
+    &__abstract
+        box-sizing border-box
+        padding 20px
+        position absolute
+        top 20px
+        left 20px
+        bottom 20px
+        width 33%
+        background-color rgba(255,255,255,.7)
+        &--right
+            left auto
+            right 20px
+    &__title
+        font-size 64px
+        line-height 72px
+        h2&
+            font-size 56px
+            line-height 64px
+        h3&
+            font-size 42px
+            line-height 48px
+        h4&
+            font-size 36px
+            line-height 42px
+        h5&
+            font-size 28px
+            line-height 36px
+
+    &__qr
+        margin 20px 0
+        width 100%
+    &__link
+        font-size 18px
+        line-height 28px
+
 .backer
     position absolute
     z-index 10

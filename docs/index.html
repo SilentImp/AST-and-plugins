@@ -1,1 +1,102 @@
-<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"><title>AST и палгины</title><link href="css/styles.css" rel="stylesheet"><script data-main="js/presentation" src="js/requirejs/require.js"></script></head><body><form class="go-to-page" action="/select/slide" method="post"><fieldset><input type="text" maxlength="3" value="" placeholder="1"></fieldset></form><section class="progress"><div class="value"></div></section><section class="dark" id="slides"><article class="illustration illustration--title cloud cloud--title"><h1><p class="wrapper">AST и палгины: давайте пошалим!</p></h1></article><article class="contacts center qrcode"><div class="wrapper"><div class="about-speaker half"><p class="name">Антон Немцев</p><p class="link">http://silentimp.info/</p><p class="twitter">@silentimp</p><p class="email">thesilentimp@gmail.com</p><p class="skype">skype: ravencry</p></div><div class="half"><img src="images/git.svg" alt="QRCODE cо ссылкой на доклад"></div><p><a href="https://github.com/SilentImp/AST-and-plugins" data-click>https://goo.gl/Uk7NHL</a></p></div></article></section></body></html>
+<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"><title>AST и плагины</title><link href="css/styles.css" rel="stylesheet"><script data-main="js/presentation" src="js/requirejs/require.js"></script></head><body><form class="go-to-page" action="/select/slide" method="post"><fieldset><input type="text" maxlength="3" value="" placeholder="1"></fieldset></form><section class="progress"><div class="value"></div></section><section class="dark" id="slides"><article class="illustration illustration--title cloud cloud--title"><h1><p class="wrapper">AST и<br>плагины: <br>давайте<br>пошалим!</p></h1></article><article class="illustration illustration--wut cloud cloud--wut"><h1><p class="wrapper">AST?</p></h1></article><article class="screen screen--ast-visual overlay"><div class="overlay__abstract overlay__abstract--left"><h5 class="overlay__title">AST Visualizer</h5><img class="overlay__qr" src="images/ast-visual.svg" alt="QRCODE cо ссылкой"><p><a class="overlay__link" href="http://nhiro.org/learn_language/AST-Visualization-on-browser.html" data-click>https://goo.gl/8rM1cf</a></p></div></article><article class="screen screen--ast-explorer overlay"><div class="overlay__abstract overlay__abstract--left"><h5 class="overlay__title">AST Explorer</h5><img class="overlay__qr" src="images/ast-explorer.svg" alt="QRCODE cо ссылкой"><p><a class="overlay__link" href="https://astexplorer.net/" data-click>https://astexplorer.net/</a></p></div></article><article class="illustration illustration--eslint"></article><article class="center code-0"><div class="wrapper"><pre><code class="javascript">$ mkdir eslint-plugin-demoforfix
+$ cd eslint-plugin-demoforfix
+$ npm init
+</code></pre></div></article><article class="center code-0"><div class="wrapper"><pre><code class="json">// package.json
+{
+  "name": "eslint-plugin-demoforfix",
+  "version": "1.0.0",
+  "main": "no-string-classname.js",
+}
+</code></pre></div></article><article class="center code-0"><div class="wrapper"><pre><code class="javascript">// no-string-classname.js
+module.exports = {
+  rules: {
+      "no-string-classname": {
+          create: function (context) {
+            return {…}
+}}}};
+</code></pre></div></article><article class="screen screen--ast-example"></article><article class="screen screen--ast-find"></article><article class="center code-7"><div class="wrapper"><pre><code class="javascript">context.report({
+  message,
+  node,
+  //…
+});
+</code></pre></div></article><article class="center code-0"><div class="wrapper"><pre><code class="javascript">return {
+  "JSXAttribute": function (node) {
+    // …
+  }
+}
+</code></pre></div></article><article class="center code-0"><div class="wrapper"><pre><code class="javascript">if ((node.name.name === 'className')
+  && (node.value.type === 'Literal')) {
+  context.report({
+    node,
+    message: 'You should use 
+    css modules instead'
+  });
+}
+</code></pre></div></article><article class="center code-9"><div class="wrapper"><pre><code class="javascript">$ npm version minor
+$ npm publish
+</code></pre></div></article><article class="screen screen--publish"></article><article class="center code-0"><div class="wrapper"><pre><code class="javascript">$ npm i -D eslint-plugin-demoforfix
+</code></pre></div></article><article class="center code-1"><div class="wrapper"><pre><code class="json">// .eslintrc
+{
+  "rules": {
+    "demoforfix/no-string-classname": 2
+  },
+  "plugins": [
+    "demoforfix"
+  ],
+}
+</code></pre></div></article><article class="screen screen--eslint-error"></article><article class="screen screen--easy"></article><article class="illustration illustration--unacceptable"></article><article class="illustration illustration--yo"></article><article class="center code-0"><div class="wrapper"><pre><code class="bash">$ sudo npm install -g yo
+$ sudo npm install -g generator-eslint
+</code></pre></div></article><article class="center code-0"><div class="wrapper"><pre><code class="bash">$ mkdir eslint-plugin-demoforfix
+$ cd eslint-plugin-demoforfix
+$ yo eslint:plugin
+$ npm i
+</code></pre></div></article><article class="screen screen--yo"></article><article class="center code-0"><div class="wrapper"><pre><code class="json">// package.json
+{
+  "name": "eslint-plugin-demoforfix",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+}
+</code></pre></div></article><article class="center code-0"><div class="wrapper"><pre><code class="javascript">var requireIndex = 
+  require("requireindex");
+module.exports.rules = 
+  requireIndex(__dirname + "/rules");
+</code></pre></div></article><article class="center code-0"><div class="wrapper"><pre><code class="javascript">// no-string-classname.js
+module.exports = {
+  rules: {
+    "no-string-classname": {
+        create: function (context) {
+          return {…}
+}}}};
+</code></pre></div></article><article class="center code-0"><div class="wrapper"><pre><code class="javascript">// no-string-classname.js
+module.exports = {
+  meta: {…},
+  "no-string-classname": {
+      create: function (context) {
+        return {…}
+}}};
+</code></pre></div></article><article class="center code-2"><div class="wrapper"><pre><code class="javascript">const rule = 
+  require("../../../lib/rules/no-string-classname");
+const RuleTester = require("eslint").RuleTester;
+</code></pre></div></article><article class="center code-0"><div class="wrapper"><pre><code class="javascript">const parserOptions = {
+  ecmaVersion: 2018,
+  sourceType: 'module',
+  ecmaFeatures: {jsx: true}};
+const ruleTester = 
+  new RuleTester({parserOptions});
+</code></pre></div></article><article class="center code-0"><div class="wrapper"><pre><code class="javascript">ruleTester.run(
+  "no-string-classname", 
+  rule, {
+  valid: [{…}, {…}],
+  invalid: [{…}, {…}],
+});
+</code></pre></div></article><article class="center code-9"><div class="wrapper"><pre><code class="javascript">{ 
+  code: '…'
+}
+</code></pre></div></article><article class="center code-7"><div class="wrapper"><pre><code class="javascript">{ code: '…',
+errors: [{
+    message: "You should use 
+      css modules instead",
+    type: "JSXAttribute"
+}]}
+</code></pre></div></article><article class="center code-9"><div class="wrapper"><pre><code class="javascript">$ npm t
+</code></pre></div></article><article class="screen screen--test"></article><article class="screen screen--develop overlay"><div class="overlay__abstract overlay__abstract--right"><h5 class="overlay__title">ESLint Developer Documentation</h5><img class="overlay__qr" src="images/develop.svg" alt="QRCODE cо ссылкой"><p><a class="overlay__link" href="https://eslint.org/docs/developer-guide/architecture" data-click>https://goo.gl/RpEUbq</a></p></div></article><article class="contacts center qrcode"><div class="wrapper"><div class="about-speaker half"><p class="name">Антон Немцев</p><p class="link">http://silentimp.info/</p><p class="twitter">@silentimp</p><p class="email">thesilentimp@gmail.com</p><p class="skype">skype: ravencry</p></div><div class="half"><img src="images/git.svg" alt="QRCODE cо ссылкой на доклад"></div><p><a href="https://github.com/SilentImp/AST-and-plugins" data-click>https://goo.gl/Uk7NHL</a></p></div></article></section></body></html>
